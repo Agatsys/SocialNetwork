@@ -1,0 +1,56 @@
+@import './misc';
+@import './normalize';
+
+
+.app-wrapper {
+  max-width: 1400px;
+  min-height: 700px;
+  display: grid;
+  grid-template-rows: 130px 1fr;
+  grid-template-columns: 3fr 10fr;
+  grid-template-areas: 
+  "h h"
+  "n c";
+  grid-gap: 10px;
+  .header {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 3fr 10fr;
+    grid-template-areas: "l h";
+    grid-area: h;
+    //background-color: rgb(233, 162, 162);
+    border-bottom: solid;
+    border-width: 1px;
+    grid-gap: 10px;
+    .logo {
+      grid-area: l;
+      min-width: 200px;
+      margin: 15px 0px 5px 10%;
+      background-image: url('../images/pngwing.com.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    } 
+  }
+  
+  .content {
+    padding: 20px 20px 20px 20px;
+    .ava {
+      width: 150px;
+      height: 150px;
+      background: url('../images/Max_Payne.png') center no-repeat ;
+      background-size: contain;
+      
+    }
+  }
+}
+
+.app-wrapper-content {
+  min-width: 500px;
+  grid-area: c;
+  background-color: rgb(255, 255, 255);
+
+}
+
+
+
+
