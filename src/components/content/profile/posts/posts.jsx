@@ -4,8 +4,6 @@ import Post from "./post/post";
 
 class Posts extends React.Component {
 
-    
-
     newPostElement = React.createRef();
 
     addPost = () => {
@@ -16,15 +14,10 @@ class Posts extends React.Component {
         console.log(this.newPostElement)
         let text = this.newPostElement.current.value;
         this.props.updateNewPostText(text);
-
     }
 
     render() {
-
-        console.log(this)
-
         const postElement = this.props.postsData.map((p) => <Post message={p.message} likesCount={p.likesCount} />);
-
         return (
             <div>
                 <div>

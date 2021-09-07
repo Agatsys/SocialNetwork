@@ -17,12 +17,13 @@ const App = (props) => {
         <div className="app-wrapper-content">
           
           <Route path='/dialogs' render={ () => 
-            <Dialogs data={props.appState.dialogsPage}/> }/>
-          
+            <Dialogs data={props.state.dialogsPage}/> }/>       
+
           <Route path='/profile' render={ () => 
-            <ProfilePage data={props.appState.profilePage} 
+            <ProfilePage data={props.state.profilePage} 
                      addPost={props.addPost}
                      updateNewPostText={props.updateNewPostText} /> } />
+
           <Route path='/news' render={ () => <News /> }/>
           <Route path='/music' render={ () => <Music /> }/>
           <Route path='/settings' render={ () => <Settings /> }/>
@@ -33,5 +34,6 @@ const App = (props) => {
 }
 
 export default App;
+
 
 

@@ -11,18 +11,18 @@
         font-size: 20px;
         text-decoration: none;
         margin: 20px;
-        border: 1px solid black;
+        //border: 1px solid black;
         &:first-child {
             color: rgb(133, 133, 133);
             font-size: 40px;
             text-decoration: none;
             margin: 20px;
-            border: 1px solid black;
+            //border: 1px solid black;
         }
     }
     a.active {
         color: rgb(0, 0, 0);
         text-shadow: 30px;
-        text-shadow: 1px 1px 20px rgb(117, 2, 2);
+        text-shadow: 1px 1px 20px rgb(34, 4, 4);
     }
 }
