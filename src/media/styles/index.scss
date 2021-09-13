@@ -4,10 +4,9 @@
 
 .app-wrapper {
   max-width: 1400px;
-  min-height: 700px;
+  min-height: 800px;
   display: grid;
-  grid-template-rows: 130px 1fr;
-  grid-template-columns: 3fr 10fr;
+  grid-template: 130px 1fr / 3fr 12fr;
   grid-template-areas: 
   "h h"
   "n c";
@@ -18,10 +17,10 @@
     grid-template-columns: 3fr 10fr;
     grid-template-areas: "l h";
     grid-area: h;
-    //background-color: rgb(233, 162, 162);
     border-bottom: solid;
     border-width: 1px;
     grid-gap: 10px;
+    //background-color: burlywood;
     .logo {
       grid-area: l;
       min-width: 200px;
@@ -31,9 +30,42 @@
       background-repeat: no-repeat;
     } 
   }
-  
+  .nav {
+    grid-area: n;
+    min-width: 250px;
+    max-width: 300px;
+    min-height: 1000px;
+    padding: 30px 10px 0px 10%;
+    border-right: solid;
+    border-width: 1px;
+    //background-color: aqua;
+    a {
+      display: block;
+      color: rgb(133, 133, 133);
+      font-size: 30px;
+      text-decoration: none;
+      margin: 15px;
+      //border: 1px solid black;
+      &:first-child {
+        color: rgb(133, 133, 133);
+        font-size: 30px;
+        text-decoration: none;
+        margin: 15px;
+        //border: 1px solid black;
+      }
+    }
+    a.active {
+      color: rgb(0, 0, 0);
+    }
+  }
+  .app-wrapper-content {
+    min-width: 500px;
+    grid-area: c;
+    //background-color: rgb(76, 71, 71);
+  }
   .content {
     padding: 20px 20px 20px 20px;
+    //background-color: blanchedalmond;
     .ava {
       width: 150px;
       height: 150px;
@@ -44,12 +76,7 @@
   }
 }
 
-.app-wrapper-content {
-  min-width: 500px;
-  grid-area: c;
-  background-color: rgb(255, 255, 255);
 
-}
 
 
 

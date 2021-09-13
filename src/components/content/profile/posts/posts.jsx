@@ -7,13 +7,12 @@ class Posts extends React.Component {
     newPostElement = React.createRef();
 
     addPost = () => {
-        this.props.addPost();
-        this.props.updateNewPostText('');
+        this.props.dispatch({type: 'ADD-POST'});
+        //this.props.updateNewPostText('');
     }
     onPostChange = () => {
-        console.log(this.newPostElement)
         let text = this.newPostElement.current.value;
-        this.props.updateNewPostText(text);
+        this.props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text});
     }
 
     render() {
