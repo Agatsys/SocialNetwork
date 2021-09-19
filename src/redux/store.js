@@ -1,3 +1,7 @@
+import dialogsReducer from "./dialogs-reducer"
+import profileReducer from "./profile-reducer"
+
+
 let store = {
     _state: {
         profilePage: {
@@ -15,7 +19,7 @@ let store = {
                 { id: 2, message: 'Як життя?' },
                 { id: 3, message: '...' },
                 { id: 4, message: 'Походу я говорю сам з собою...' },
-                { id: 5, message: 'Люблю поговорити з розумними людьми :)' }
+                { id: 5, message: ':)' }
             ],
             dialogsData: [
                 { id: 1, name: 'Сергій' },
@@ -23,7 +27,8 @@ let store = {
                 { id: 3, name: 'Макс' },
                 { id: 4, name: 'Якийсь чел' },
                 { id: 5, name: 'Саньок' }
-            ]
+            ],
+            newMessageBody: ''
         },
     },
     getState() {
@@ -32,31 +37,18 @@ let store = {
     rerenderEntireTree() {
         console.log('State changed');
     },
-    //addPost() {
-        
-    //},
-    //updateNewPostText(newText) {
-        
-    //},
+
     subscribe(observer) {
         this.rerenderEntireTree = observer;
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.postsData.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this.rerenderEntireTree(this._state);
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this.rerenderEntireTree(this._state);
-        };
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+
+        this.rerenderEntireTree(this._state);
     }
 }
+
 
 export default store;
 //window.store = store;
