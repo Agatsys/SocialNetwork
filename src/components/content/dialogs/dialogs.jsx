@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../../redux/dialogs-reducer';
 import i from './dialogs.module.scss';
 
 const DialogItem = (props) => {
@@ -18,19 +17,18 @@ const Message = (props) => {
 }
 const Dialogs = (props) => {
 
-    let state = props.store.getState().dialogsPage;
+    let state = props.dialogsPage;
     
     let dialogsElements = state.dialogsData.map( (d) => <DialogItem name={d.name} id={d.id} /> );
     let messageElements = state.messagesData.map( (m) => <Message message={m.message} /> );
     let newMessageBody = state.newMessageBody;
 
-    let addMessage = (props) => {
-        debugger;
-        props.store.dispatch(sendMessageCreator());
+    let onSendMessageClick = () => {
+        props.sendMessage()
     }
-    let pizdez = (e) => {
+    let onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body))
+        props.updateNewMessageBody(body)
     }
         
     return (
@@ -46,12 +44,12 @@ const Dialogs = (props) => {
                     <div>
                         <textarea 
                             value={newMessageBody}
-                            onChange={pizdez}
+                            onChange={onNewMessageChange}
                             placeholder='Писати сюди'>
                         </textarea>    
                     </div>
                     <div>
-                        <button onClick={addMessage}>Надіслати</button>
+                        <button onClick={onSendMessageClick}>Надіслати</button>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,7 @@ let initialState = {
         { id: 4, message: 'Походу я говорю сам з собою...' },
         { id: 5, message: ':)' }
     ],
+    newMessageBody: '',
     dialogsData: [
         { id: 1, name: 'Сергій' },
         { id: 2, name: 'Василь' },
@@ -19,13 +20,14 @@ let initialState = {
         { id: 4, name: 'Якийсь чел' },
         { id: 5, name: 'Саньок' }
     ],
-    newMessageBody: ''
+    
 }
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
             state.newMessageBody = action.body;
+            console.log(state)
             return state;
         case SEND_MESSAGE:
             let body = state.newMessageBody;

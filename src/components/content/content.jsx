@@ -1,13 +1,11 @@
-import Posts from './profile/posts/posts';
+import PostsContainer from './profile/posts/postsContainer';
 import Profile from './profile/profile';
 
 const ProfilePage = (props) => {
     return (
         <div className='content'>
             <Profile />
-            <Posts postsData={props.data.postsData} 
-                   newPostText={props.data.newPostText} 
-                   dispatch={props.dispatch} />
+            <PostsContainer />
         </div>
     )
 }
