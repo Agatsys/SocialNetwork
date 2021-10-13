@@ -1,17 +1,20 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
+const SET_TOTAL_USER_COUNT = 'SET-TOTAL-USER-COUNT'
 
 export const followAC = (userId) => ({ type: FOLLOW, userId })
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId })
 export const setUsersAC = (users) => ({ type: SET_USERS, users })
+export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
+export const setTotalUsersCountAC = (totalUsersCount) => ({ type: SET_TOTAL_USER_COUNT, totalUsersCount })
 
 let initialState = {
-    users: [
-        //{ id: 1, photoURL: 'https://bigpicture.ru/wp-content/uploads/2015/11/nophotoshop29.jpg', followed: true, fullname: "Sergiy", status: 'Kung Lao vins!', location: {city: 'Lviv', country: 'Ukraine'} },
-        //{ id: 2, photoURL: 'https://bigpicture.ru/wp-content/uploads/2015/11/nophotoshop36.jpg', followed: true, fullname: "Vasil", status: 'Scorpion vins!', location: {city: 'Lviv', country: 'Ukraine'} },
-        //{ id: 3, photoURL: 'https://bigpicture.ru/wp-content/uploads/2015/11/nophotoshop22.jpg', followed: false, fullname: "Max", status: 'i am a mentor of this two noobs', location: {city: 'Lviv', country: 'Ukraine'} },
-    ],
+    users: [ ],
+    pageSize: 5,
+    totalUsersCount: 19,
+    currentPage: 1,
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -37,7 +40,11 @@ const usersReducer = (state = initialState, action) => {
                 } ) 
             }
         case SET_USERS:
-            return { ...state, users: [...state.users, ...action.users] }
+            return { ...state, users: action.users }
+        case SET_CURRENT_PAGE:
+            return { ...state, currentPage: action.currentPage }
+        case SET_TOTAL_USER_COUNT:
+            return { ...state, totalUsersCount: action.totalUsersCount }
         default:
             return state;
     }
