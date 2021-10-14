@@ -34,7 +34,7 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        updataeNewPostText: (text) =>{
+        updataeNewPostText: (text) => {
             let action = updateNewPostTextActionCreator(text)
             dispatch(action)
         },

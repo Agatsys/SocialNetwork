@@ -5,7 +5,7 @@ import ProfilePage from './components/content/content';
 import Music from './components/content/music/music';
 import Settings from './components/content/settings/settings';
 import DialogsContainer from './components/content/dialogs/dialogsContainer';
-import Users from './components/users/users';
+import UsersAPI from './components/users/usersAPI';
 
 
 const App = (props) => {
@@ -17,7 +17,7 @@ const App = (props) => {
       <div className="app-wrapper-content">
         <Route path='/dialogs' component={() => <DialogsContainer />} />
         <Route path='/profile' component={() => <ProfilePage />} />
-        <Route path='/users' component={() => <Users />} />
+        <Route path='/users' component={() => <UsersAPI />} />
         <Route path='/music' component={() => <Music />} />
         <Route path='/settings' component={() => <Settings />} />
       </div>
