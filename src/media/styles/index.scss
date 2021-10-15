@@ -28,6 +28,15 @@
       background-image: url('../images/pngwing.com.png');
       background-size: contain;
       background-repeat: no-repeat;
+      //border: 1px solid black;
+    }
+    .loginBlock__Header {
+      display: flex;
+      grid-area: h;
+      float: right;
+      //border: 1px solid black;
+      align-self: center;
+      justify-self: end;
     } 
   }
   .nav {
@@ -69,9 +78,8 @@
     .ava {
       width: 150px;
       height: 150px;
-      background: url('../images/Max_Payne.png') center no-repeat ;
+      //background: url('../images/Max_Payne.png') center no-repeat ;
       background-size: contain;
-      
     }
   }
   .selectedPage__Users {
