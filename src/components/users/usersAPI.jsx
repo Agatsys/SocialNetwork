@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { followSuccesAC, getUsersThunkCreator, onPageChangedThunkCreator, toggleIsFollowingProgressAC, unfolloSucceswAC } from '../../redux/users.reducer';
 import Users from './users';
 import Preloader from '../common/preloader/preloader';
+//import { WithAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 
 class UsersAPI extends React.Component {
@@ -53,4 +55,7 @@ let mapDispatchToProps = {
     onPageChangedTC: onPageChangedThunkCreator
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersAPI);
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    //WithAuthRedirect
+)(UsersAPI)

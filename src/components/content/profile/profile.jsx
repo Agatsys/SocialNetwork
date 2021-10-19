@@ -1,5 +1,6 @@
 import React from 'react'
 import Preloader from '../../common/preloader/preloader';
+import ProfileStatus from './profileStatus';
 
 
 const Profile = (props) => {
@@ -16,6 +17,7 @@ const Profile = (props) => {
                 <div className='heading'>
                     Max Payne
                 </div>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     )

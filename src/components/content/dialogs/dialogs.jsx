@@ -1,6 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import i from './dialogs.module.scss';
+import { connect } from 'react-redux';
+import { sendMessageCreator, updateNewMessageBodyCreator } from '../../../redux/dialogs-reducer';
+//import { WithAuthRedirect } from '../../../hoc/withAuthRedirect';
+import { compose } from 'redux';
+
 
 const DialogItem = (props) => {
     let path = "/dialogs/" + props.id;
@@ -29,8 +34,7 @@ const Dialogs = (props) => {
     let onNewMessageChange = (e) => {
         let body = e.target.value;
         props.updateNewMessageBody(body)
-    }
-        
+    } 
     return (
         <div className={i.dialogs}>
             <div className={i.dialogsItems}>
@@ -57,4 +61,21 @@ const Dialogs = (props) => {
     )
 }
 
-export default Dialogs;
+let mapStateToProps = (state) => ({
+    dialogsPage: state.dialogsPage,
+})
+let mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewMessageBody: (body) => {
+            dispatch(updateNewMessageBodyCreator(body))
+        },
+        sendMessage: () => {
+            dispatch(sendMessageCreator())
+        }
+    }
+}
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    //WithAuthRedirect
+)(Dialogs)

@@ -1,8 +1,9 @@
-import axios from 'axios';
 import React from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { setUserProfile } from '../../redux/profile.reducer';
+import { compose } from 'redux';
+//import { WithAuthRedirect } from '../../hoc/withAuthRedirect';
+import { getStatus, getUserProfile, updateStatus } from '../../redux/profile.reducer';
 import ProfilePage from './content'
 
 
@@ -13,25 +14,44 @@ class ProfilePageAPI extends React.Component {
         if (!userId) {
             userId = 20252;
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
-            this.props.setUserProfile(response.data);
-        });
+        this.props.getUserProfile(userId);
+        setTimeout(() => {
+            this.props.getUserStatus(userId)
+        }, 1000);
     }
 
     render () {
+        //if (!this.props.isAuth) return <Redirect to={'/login'}/>
+
         return (
-            <ProfilePage {...this.props} profile={this.props.profile}/>
+            <ProfilePage 
+                {...this.props} 
+                profile={this.props.profile} 
+                status={this.props.status} 
+                updateStatus={this.props.updateStatus}/>
         )
     } 
 }
 
 const mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    status: state.profilePage.status
+    //isAuth: state.auth.isAuth
 })
 const mapDispatchToProps = {
-    setUserProfile: setUserProfile
+    getUserProfile: getUserProfile,
+    getUserStatus: getStatus,
+    updateStatus: updateStatus
 }
 
-let withUrlDataContainerComponent = withRouter(ProfilePageAPI)
+//let withRedirect = WithAuthRedirect(ProfilePageAPI)
 
-export default connect (mapStateToProps, mapDispatchToProps)(withUrlDataContainerComponent)
+//let withUrlDataContainerComponent = withRouter(withRedirect)
+
+//export default connect (mapStateToProps, mapDispatchToProps)(withUrlDataContainerComponent)
+
+export default compose(
+    connect (mapStateToProps, mapDispatchToProps),
+    withRouter,
+    //WithAuthRedirect
+)(ProfilePageAPI)
