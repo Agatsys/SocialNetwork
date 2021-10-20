@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
-const Navigation = () => {
 
+const Navigation = () => {
     return (
         <nav className='nav'>
             <NavLink to="/profile" activeClassName='active'>Профіль</NavLink>
