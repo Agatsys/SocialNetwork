@@ -43,3 +43,37 @@ export const profileAPI = {
         return instance.put(`profile/status/`, {status: status})
     }
 }
+
+
+
+
+
+// async function getTimeAfterProcessing() {
+//     return new Promise((resolve, reject) => {
+//         try {
+//             setTimeout(() => {
+//                 resolve(new Date())
+//             }, 4000)
+//         } catch (error) {
+//             console.log(error)
+//             reject(error)
+//         }
+//     })
+// }
+// const instanse2 = {
+//     get() {
+//         return new Promise(async(resolve, reject) => {
+//             try {
+//                 const time = await getTimeAfterProcessing()
+//                 resolve(time)
+//             } catch(error) {
+//                 reject(error)
+//             }
+//         })
+//     }
+// }
+
+// console.log(new Date())
+// instanse2.get()
+//     .then(time => console.log(time))
+//     .catch(error => console.log('our error', error))

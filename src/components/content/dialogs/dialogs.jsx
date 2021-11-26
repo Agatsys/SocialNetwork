@@ -11,7 +11,7 @@ import { Field, reduxForm } from 'redux-form';
 const DialogItem = (props) => {
     let path = "/dialogs/" + props.id;
     return (
-        <div className={i.dialog} activeClassName={i.activeLink}>
+        <div className={i.dialog} >  {/* activeClassName={i.activeLink} */}
             <NavLink to={path}>{props.name}</NavLink>
         </div>
     )

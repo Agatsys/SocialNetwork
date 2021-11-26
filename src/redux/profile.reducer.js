@@ -10,11 +10,13 @@ export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setStatus = (status) => ({ type: SET_STATUS, status })
 
-export const getUserProfile = (userId) => (dispatch) => {
-    profileAPI.getProfile(userId)
-        .then(response => {
-            dispatch(setUserProfile(response.data));
-        });
+export const getUserProfile = (userId) => async (dispatch) => {
+    try {
+        const response = await profileAPI.getProfile(userId)
+        dispatch(setUserProfile(response.data));
+    } catch(error) {
+        console.log(error)
+    }
 }
 export const getStatus = (userId) => (dispatch) => {
     profileAPI.getStatus(userId)
